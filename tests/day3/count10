@@ -1,0 +1,6 @@
+touch a
+ls > a
+for i in $'/home/student/*'
+do
+echo $i
+done

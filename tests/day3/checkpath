@@ -1,0 +1,6 @@
+echo 'Enter path'
+read p
+if [ $path == /home/student ]
+echo ' right path'
+else
+echo 'wrong path'

@@ -1,0 +1,4 @@
+echo "first argument: " $1 "second argument" $2
+echo "Number of args: " $#
+echo " Value of all args" $@
+echo "Value of all args" $*

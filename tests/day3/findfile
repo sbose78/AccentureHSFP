@@ -1,0 +1,5 @@
+echo "Enter path"
+read p
+echo "Enter type"
+read type
+find $p -name *.$type

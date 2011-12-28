@@ -1,0 +1,10 @@
+if [ -f $1 ]
+then
+	echo 'FILE'
+elif [ -d $1 ] 
+then
+	echo 'DIR'
+else
+	echo 'NOT A DIR/FILE'
+fi
+

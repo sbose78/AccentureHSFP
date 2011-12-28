@@ -1,0 +1,6 @@
+echo "enter a num1"
+read num1
+echo "enter a num2"
+read num2
+echo `expr $num1 + $num2`
+echo `expr $num1 \* $num2`
