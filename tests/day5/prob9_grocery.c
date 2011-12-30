@@ -20,10 +20,23 @@ void printMenu(const char *op,char c)
 {
 
 	printf("\n\n%c. %s",c,op);
-	
 
 }	
 
+float getAdjustments(int quantity,float gt) // gt is the grand total
+{
+	float discount=0,shipping=0;
+
+	if(gt>1000) discount=0.5*gt;
+	if(quantity<=20) shipping=3.5;
+	else if(quantity>=20 && quantity<25) shipping=5;
+	else 
+	{	
+		shipping=10.5 + (quantity-25)*1 ;
+
+	}
+	return shipping-discount;
+}
 
 char printMainMenu()
 {
@@ -41,13 +54,12 @@ char printMainMenu()
 	return choice;
 
 }
-int calculateTotal(char n)
-{
-	int r1=100,r2=200,r3=300,q=0;
+float calculateTotal(char n, char q)
 
-	if(n!='D')printf("\n ENTER QUANTITY: ");	
-	scanf("%d",&q);
-	
+{
+	float r1=2.25,r2=5.65,r3=10.89;
+
+
 	switch(n)
 	{
 		case 'A':return q*r1;
@@ -60,15 +72,28 @@ int calculateTotal(char n)
 
 int main()
 {
-	int grand_total=0,status=1;
+	float grand_total=0,status=0;
+	int quantity,net_quantity=0;
 	
 	while(status!=-1)
-	{
+	{	
 		char choice=printMainMenu();
-		
-		status=calculateTotal(choice);
-		if(status!=-1) grand_total+=status;
-		printf("\n GRAND TOTAL:%d",grand_total);
+
+		if(choice!='D')
+		{	printf("\nEnter quantity:");
+			scanf("%d",&quantity);
+			net_quantity+=quantity;
+		}
+
+		status=calculateTotal(choice,quantity);
+		if(status!=-1)
+		{
+			 grand_total+=status;
+			 printf("\n Current transaction: %f ,  Total %f",status,grand_total);
+		}
+
 	}
+	printf("\n GRAND TOTAL: %f",grand_total+getAdjustments(quantity,grand_total));
+
 }	
 	
