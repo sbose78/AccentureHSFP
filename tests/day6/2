@@ -1,0 +1,64 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+void getNumWord(char ans[],int num)
+{
+	switch(num)
+	{
+		case 1: ans="ONE";break;
+		case 2: ans="TWO";break;
+		case 3: ans="THREE";break;
+		case 4: ans="FOUR";break;
+		case 5: ans="FIVE";break;
+		case 6: ans="SIX";break;
+		case 7: ans="SEVEN";break;
+		case 8: ans="EIGHT";break;
+		case 9: ans="NINE";break;
+		case 0: ans="AND";break;
+	}
+	
+
+}
+
+void getPosWord(char ans[],int pos)
+{
+	switch(pos)
+	{	case 1:ans="ONES";
+		case 2:ans="HUNDRED";
+		case 3:ans="THOUSAND";
+	}
+	
+}
+
+//void handle
+void getWord(char *ans,int num,int pos)
+{
+	char pword[50],nword[50];
+	ans=(char *),malloc(50);
+	getPosWord(pword,pos);
+	getNumWord(nword,num);
+	ans=strcat(pword,nword);
+}
+
+// This function extracts a digit and sends to the getWord fucntion for further processing.
+
+void getNumInWords(int n,char ans[])
+{
+	char word[50];char *completed;
+	completed=(char *)malloc(50);
+	int i;
+	for(i=1;n!=0;i++)
+	{
+		getWord(word,n%10,i);
+		n/=10;
+		completed=strcat(completed,word);	
+	}
+}
+int main()
+{
+	char ans[50];
+	getNumInWords(1234,ans);
+	printf("%s",ans);	
+	return 0;
+}
